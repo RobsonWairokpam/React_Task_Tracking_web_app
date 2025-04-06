@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { Provider } from 'react-redux';
+import { FC, ReactNode } from "react";
+import Page from "./Pages";
+import { store } from "./redux/store";
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProviderWrapper>
+      <CssBaseline />
+      <Page />
+    </ProviderWrapper>
   );
-}
+};
+
+const ProviderWrapper: FC<{ children: ReactNode }> = ({ children }) => {
+  return (
+    // <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </Provider>
+  );
+};
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#244D59",
+      light: "#E8E8E8",
+      dark: "#0C1F31",
+    },
+    secondary: {
+      main: "#DB7A18",
+    },
+  },
+  typography: {
+    fontFamily: ["Open Sans", "sans-serif"].join(","),
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
+            width: "6px",
+            height: "6px",
+          },
+          "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
+            borderRadius: 8,
+            backgroundColor: "#244D59",
+            minHeight: 200,
+          },
+        },
+      },
+    },
+  },
+});
 
 export default App;
