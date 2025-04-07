@@ -1,22 +1,5 @@
-import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  IconButton,
-  Typography,
-  Divider,
-  ListItem,
-  ListItemText,
-  List,
-  Toolbar,
-  AppBar,
-  Drawer,
-  useMediaQuery,
-  Tooltip,
-  ListItemButton
-} from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-
+import { Box, IconButton, Typography, Toolbar, AppBar } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export interface NavProps {
   uploadbutton: boolean;
@@ -28,31 +11,28 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar component="nav" sx={{ boxShadow: 'none' }}>
+      <AppBar component="nav" sx={{ boxShadow: "none" }}>
         <Toolbar
-         
           style={{
             paddingLeft: 20,
-            paddingRight: 0
+            paddingRight: 0,
           }}
         >
           <Box
-            component={'div'}
+            component={"div"}
             sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
+              display: "flex",
+              justifyContent: "space-between",
               flexGrow: 1,
-              alignItems: 'center'
+              alignItems: "center",
             }}
           >
-            <IconButton color="inherit" onClick={() => navigate('/')}>
-                <Typography variant="h5">Task Tracking</Typography>
+            <IconButton color="inherit" onClick={() => navigate("/")}>
+              <Typography variant="h5">Task Tracking</Typography>
             </IconButton>
-            
           </Box>
 
-          <Box component={'span'} sx={{ minWidth: '4%' }} />
-         
+          <Box component={"span"} sx={{ minWidth: "4%" }} />
         </Toolbar>
       </AppBar>
       <Toolbar />

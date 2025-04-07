@@ -6,7 +6,6 @@ import {
   Button,
   MenuItem,
   Paper,
-  Switch,
   Table,
   TableBody,
   TableCell,
@@ -15,7 +14,7 @@ import {
   TableRow,
   TextField,
 } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppDispatch } from "../redux/hooks";
 import { useSelector } from "react-redux";
 import { Task } from "../utils";
 import {
@@ -34,9 +33,7 @@ const LandingPage: FC = () => {
     (state: RootState) => state.task
   );
 
-  // const existingTask = useAppSelector((state) => {
-  //   return state.task.items;
-  // });
+ 
   const dispatch = useAppDispatch();
 
   const filteredTasks = items.filter((task: Task) => {
@@ -48,11 +45,7 @@ const LandingPage: FC = () => {
   });
   console.log("fillerteerr", filteredTasks);
 
-  // const [tasks, setTasks] = useState<Task[]>(items);
 
-  // const handleDragStart = (index: number) => {
-  //   setDraggedIndex(index);
-  // };
   const handleDragStart = (
     index: number,
     event: React.DragEvent<HTMLTableRowElement>
@@ -141,7 +134,6 @@ const LandingPage: FC = () => {
           </TextField>
         </Box>
 
-        {/* Table */}
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
             <TableHead>
